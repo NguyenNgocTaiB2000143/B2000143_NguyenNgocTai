@@ -1,0 +1,28 @@
+{
+  "name": "myshop-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NguyenNgocTaiB2000143/B2000143_NguyenNgocTai.git"
+  },
+  "author": "B2000143_NguyenNgocTai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NguyenNgocTaiB2000143/B2000143_NguyenNgocTai.git"
+  },
+  "homepage": "https://github.com/NguyenNgocTaiB2000143/B2000143_NguyenNgocTai.git",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongodb": "^4.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
