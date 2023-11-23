@@ -22,23 +22,19 @@
                   </ul>
                </div>
                <div class="column">
-                  <h5><b>Dịch vụ khách hàng</b></h5>
+                  <h5><b>Dịch Vụ</b></h5>
                   <ul>
                      <li>
-                        <router-link to="/contact">Liên hệ với tôi</router-link>
+                        <router-link to="/contact">Liên Hệ</router-link>
                      </li>
                   </ul>
                </div>
                <div class="column">
-                  <h5><b>Mạng xã hội</b></h5>
+                  <h5><b>Mạng Xã Hội</b></h5>
                   <ul>
                      <li>
                         <i class="fa-brands fa-facebook"></i>
                         <a href="https://www.facebook.com"> Facebook</a>
-                     </li>
-                     <li>
-                        <i class="fa-brands fa-twitter"></i>
-                        <a href="https://www.twitter.com"> Twitter</a>
                      </li>
                      <li>
                         <i class="fa-brands fa-instagram"></i>

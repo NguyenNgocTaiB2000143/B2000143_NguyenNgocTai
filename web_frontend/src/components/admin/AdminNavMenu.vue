@@ -59,6 +59,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 .navbar {
    border-top: 1px solid #8B4513;
    border-bottom: 1px solid #8B4513;
