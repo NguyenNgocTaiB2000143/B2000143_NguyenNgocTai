@@ -20,6 +20,7 @@
                 </p>
                 <p>
                   <div class="intro">
+            <h1><b>..................</b></h1>
             <h1><b>Harmony Guitars</b></h1>
             <p>
                Chào mừng bạn đến với Harmony Guitars - điểm đến lý tưởng cho những người yêu thích âm nhạc và đam mê đàn guitar. 

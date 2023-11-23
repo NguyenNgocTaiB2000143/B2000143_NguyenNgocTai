@@ -1,7 +1,4 @@
-<template>
-      
-         <h1 class="title"><b>CHÀO MỪNG QUÝ KHÁCH ĐÃ ĐẾN VỚI CỬA HÀNG</b></h1>
-</template>
+
 
 <script>
 import { Splide, SplideSlide } from "@splidejs/vue-splide";

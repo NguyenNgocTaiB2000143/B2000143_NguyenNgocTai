@@ -1,67 +1,65 @@
 <template>
-     
    <div class="container">
-      <div class="box">
-
-</div>
-      <nav class="navbar navbar-expand-lg navbar-light">
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-         </button>
-       
-         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-               <li class="nav-item active">
-                  <router-link to="/" class="nav-link">Home
-                     <i class="fa-solid fa-house"></i>
-                  </router-link>
-               </li>
-               <li class="nav-item dropdown">
-                  <router-link to="/menu" class="nav-link">Menu
-                     
-                  </router-link>
-               </li>
-               <li class="nav-item">
-                  <router-link to="/contact" class="nav-link">
-                     Liên hệ
-                  </router-link>
-               </li>
-               <li class="nav-item">
-                  <router-link to="/intro" class="nav-link">
-                     Giới thiệu
-                  </router-link>
-               </li>
-            </ul>
-            <ul class="navbar-nav ">
-               <li class="nav-item ">
-                  <router-link to="/cart" class="nav-link">
-                     Giỏ hàng
-                     <i class="fa-solid fa-cart-shopping"></i>
-                     {{ localCarts.length }}
-                  </router-link>
-               </li>
-
-               <li class="nav-item" v-if="this.localUser.role != ''">
-                  <router-link to="/login" class="nav-link" @click="handleLogout">
-                     <b>{{ this.localUser.name }}</b>
-                     <button class="btn logout-btn">
-                        <i class="fa-solid fa-user"></i>
-                     </button>
-                  </router-link>
-               </li>
-               <li class="nav-item" v-if="this.localUser.role === 'admin'">
-                  <router-link to="/adminpage" class="nav-link">
-                     <button class="btn admin-btn">
-                        <i class="fa-solid fa-people-roof"></i>
-                     </button>
-                  </router-link>
-               </li>
-            </ul>
-         </div>
-      </nav>
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       <router-link to="/" class="navbar-brand">
+         <i class="fas fa-home"></i> Trang chủ
+       </router-link>
+       <button
+         class="navbar-toggler"
+         type="button"
+         data-toggle="collapse"
+         data-target="#navbarNav"
+         aria-controls="navbarNav"
+         aria-expanded="false"
+         aria-label="Toggle navigation"
+       >
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarNav">
+         <ul class="navbar-nav mr-auto">
+           <li class="nav-item">
+             <router-link to="/menu" class="nav-link">
+               Menu
+             </router-link>
+           </li>
+           <li class="nav-item">
+             <router-link to="/contact" class="nav-link">
+               Liên hệ
+             </router-link>
+           </li>
+           <li class="nav-item">
+             <router-link to="/intro" class="nav-link">
+               Giới thiệu
+             </router-link>
+           </li>
+         </ul>
+         <ul class="navbar-nav ml-auto">
+           <li class="nav-item">
+             <router-link to="/cart" class="nav-link">
+               Giỏ hàng <i class="fas fa-shopping-cart"></i>
+               <span class="badge badge-danger">{{ localCarts.length }}</span>
+             </router-link>
+           </li>
+           <li class="nav-item" v-if="localUser.role !== ''">
+             <router-link to="/login" class="nav-link" @click="handleLogout">
+               <b>{{ localUser.name }}</b>
+               <button class="btn logout-btn">
+                 <i class="fas fa-user"></i>
+               </button>
+             </router-link>
+           </li>
+           <li class="nav-item" v-if="localUser.role === 'admin'">
+             <router-link to="/adminpage" class="nav-link">
+               <button class="btn admin-btn">
+                 <i class="fas fa-users-cog"></i>
+               </button>
+             </router-link>
+           </li>
+         </ul>
+       </div>
+     </nav>
    </div>
-</template>
+ </template>
 
 <script>
 export default {
@@ -89,94 +87,75 @@ export default {
 
 <style scoped>
 .container {
-  
-   padding :0px 40px 0px 20px ;
+   padding: 20px;
    max-width: 100%;
    z-index: 50;
-   position : fixed; 
-
+   position: fixed;
+   background-color: #fff;
+   width: 100%;
 }
-
 
 .navbar {
    border-top: 1px solid #8B4513;
    border-bottom: 1px solid #8B4513;
-   border-right: 0;
-   border-left: 0;
    background-color: #8B4513;
 }
 
 .navbar .nav-item {
-   color: #8B4513;
-   position: relative;
+   color: #000000;
 }
 
 .navbar .nav-item a {
    font-family: "Open Sans", sans-serif;
-   color: #fff !important;
+   color: #070505 !important;
    text-align: left;
    font-size: 16px;
+   padding: 15px;
+   display: block;
 }
 
 .navbar .nav-item a:hover {
-   color: #fff !important;
+   background-color: rgba(255, 255, 255, 0.1);
    border-radius: 10px;
    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.nav-item ul li a {
-   display: flex;
-   text-align: left;
-}
-
 .dropdown-menu {
-   width: 1031px;
+   width: 100%;
 }
 
 .dropdown-menu ul {
-   position: relative;
-   z-index: 500;
-   left: -15px;
-   right: 0;
    list-style: none;
-   padding-left: 0px;
-   margin-left: 0;
+   padding-left: 0;
 }
 
 .nav-item:hover .dropdown-menu {
    display: block;
 }
 
-.logout-btn {
+.logout-btn,
+.admin-btn {
    width: 30px;
    height: auto;
-   padding: 0px !important;
    margin-top: -5px;
    margin-left: 5px;
 }
 
-.admin-btn {
-   width: 30px;
-   height: auto;
-   padding: 0px !important;
-   margin-top: -5px;
-}
 @media screen and (max-width: 1023px) {
-   .admin-btn{
+   .admin-btn {
       visibility: hidden;
    }
 }
-
 
 i {
    color: #8B4513;
 }
 
-.box{
-   background-color: #fff;
-   height:40px;
-   width:100%;
-   margin-top :-30px;
+.box {
+   height: 40px;
+   width: 100%;
+   margin-top: -30px;
+   background-color: #090707;
 }
 </style>
 

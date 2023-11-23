@@ -1,71 +1,113 @@
 <template>
    <div class="container">
-      <div class="d-flex justify-content-center h-100">
-         <div class="card shadow-lg p-3 mb-5 bg-body rounded">
-            <div class="card-header text-center">
-               <h3>Đăng ký tài khoản</h3>
-            </div>
-            <div class="card-body">
-               <form @submit.prevent="register()">
-                  <div class="input-group form-group">
-                     <div class="input-group-prepend">
-                        <span class="input-group-text">
-                           <i class="fa-solid fa-user"></i>
-                        </span>
+      <div class="row justify-content-center align-items-center min-vh-100">
+         <div class="col-md-6">
+            <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+               <div class="card-header text-center">
+                  <h3><b>Đăng Ký Tài Khoản</b></h3>
+               </div>
+               <div class="card-body">
+                  <form @submit.prevent="register()">
+                     <div class="form-group">
+                        <label for="name">Họ và tên</label>
+                        <div class="input-group">
+                           <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                 <i class="fa-solid fa-user"></i>
+                              </span>
+                           </div>
+                           <input
+                              type="text"
+                              id="name"
+                              class="form-control"
+                              placeholder="Họ và tên"
+                              @blur="validate()"
+                              v-model="user.name"
+                              :class="{ 'is-invalid': errors.name }"
+                           />
+                        </div>
+                        <div class="invalid-feedback" v-if="errors.name">
+                           {{ errors.name }}
+                        </div>
                      </div>
-                     <input type="text" class="form-control" placeholder="Họ và tên" @blur="validate()"
-                        v-model="user.name" :class="{ 'is-invalid': errors.name }" />
-                     <div class="invalid-feedback" v-if="errors.name">
-                        {{ errors.name }}
+                     <div class="form-group">
+                        <label for="email">Email</label>
+                        <div class="input-group">
+                           <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                 <i class="fa-solid fa-envelope"></i>
+                              </span>
+                           </div>
+                           <input
+                              type="email"
+                              id="email"
+                              class="form-control"
+                              placeholder="Email"
+                              @blur="validate()"
+                              v-model="user.email"
+                              :class="{ 'is-invalid': errors.email }"
+                           />
+                        </div>
+                        <div class="invalid-feedback" v-if="errors.email">
+                           {{ errors.email }}
+                        </div>
                      </div>
+                     <div class="form-group">
+                        <label for="password">Mật khẩu</label>
+                        <div class="input-group">
+                           <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                 <i class="fas fa-key"></i>
+                              </span>
+                           </div>
+                           <input
+                              type="password"
+                              id="password"
+                              class="form-control"
+                              placeholder="Mật khẩu"
+                              @blur="validate()"
+                              v-model="user.password"
+                              :class="{ 'is-invalid': errors.password }"
+                           />
+                        </div>
+                        <div class="invalid-feedback" v-if="errors.password">
+                           {{ errors.password }}
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label for="repassword">Nhập lại mật khẩu</label>
+                        <div class="input-group">
+                           <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                 <i class="fa-solid fa-shield"></i>
+                              </span>
+                           </div>
+                           <input
+                              type="password"
+                              id="repassword"
+                              class="form-control"
+                              placeholder="Nhập lại mật khẩu"
+                              @blur="validate()"
+                              v-model="user.repassword"
+                              :class="{ 'is-invalid': errors.repassword }"
+                           />
+                        </div>
+                        <div class="invalid-feedback" v-if="errors.repassword">
+                           {{ errors.repassword }}
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block">Đăng ký</button>
+                     </div>
+                  </form>
+               </div>
+               <div class="card-footer">
+                  <div class="d-flex justify-content-center links">
+                     <p>
+                        Đã có tài khoản? 
+                        <router-link to="/login"><b>Đăng nhập</b></router-link>
+                     </p>
                   </div>
-                  <div class="input-group form-group">
-                     <div class="input-group-prepend">
-                        <span class="input-group-text">
-                           <i class="fa-solid fa-envelope"></i>
-                        </span>
-                     </div>
-                     <input type="email" class="form-control" placeholder="Email" @blur="validate()" v-model="user.email"
-                        :class="{ 'is-invalid': errors.email }" />
-                     <div class="invalid-feedback" v-if="errors.email">
-                        {{ errors.email }}
-                     </div>
-                  </div>
-                  <div class="input-group form-group">
-                     <div class="input-group-prepend">
-                        <span class="input-group-text">
-                           <i class="fas fa-key"></i>
-                        </span>
-                     </div>
-                     <input type="password" class="form-control" placeholder="Mật khẩu" @blur="validate()"
-                        v-model="user.password" :class="{ 'is-invalid': errors.password }" />
-                     <div class="invalid-feedback" v-if="errors.password">
-                        {{ errors.password }}
-                     </div>
-                  </div>
-                  <div class="input-group form-group">
-                     <div class="input-group-prepend">
-                        <span class="input-group-text">
-                           <i class="fa-solid fa-shield"></i>
-                        </span>
-                     </div>
-                     <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" @blur="validate()"
-                        v-model="user.repassword" :class="{ 'is-invalid': errors.repassword }" />
-                     <div class="invalid-feedback" v-if="errors.repassword">
-                        {{ errors.repassword }}
-                     </div>
-                  </div>
-                  <div class="form-group">
-                     <input type="submit" value="Đăng ký" class="btn login_btn" />
-                  </div>
-               </form>
-            </div>
-            <div class="card-footer">
-               <div class="d-flex justify-content-center links">
-                  <p>
-                     Đăng nhập ngay!
-                     <router-link to="/login"><b>ĐĂNG NHẬP</b></router-link>
-                  </p>
                </div>
             </div>
          </div>
@@ -140,90 +182,80 @@ export default {
 </script>
 
 <style scoped>
-.container {
 
+.container {
    padding-top: 80px;
-   padding-bottom: 100px;
-   margin-top: 10px;
+   background-image: url('https://img.freepik.com/premium-vector/guitar-doodle-style-paper-background-vector-illustration_8043-1715.jpg?w=740'); /* Đường dẫn đến hình nền */
+   background-size: cover;
+   background-position: center;
+}
+.container {
+   padding-top: 80px;
 }
 
 .card {
-   height: 520px;
-   margin-top: auto;
-   margin-bottom: auto;
-   width: 400px;
-   /* border: 1px solid #E38B29; */
-   /* border-radius: 10px; */
-
-}
-
-.social_icon span {
-   font-size: 60px;
-   margin-left: 10px;
-   color: #169008;
-}
-
-.social_icon span:hover {
-   color: white;
-   cursor: pointer;
-}
-
-.card-header h3 {
-   color: #169008;
+   border: none;
+   border-radius: 15px;
 }
 
 .card-header {
-   background-color: white;
-   border-radius: 10px;
+   background-color: #8B4513;
+   color: white;
+   border-top-left-radius: 15px;
+   border-top-right-radius: 15px;
 }
 
-.social_icon {
-   position: absolute;
-   right: 20px;
-   top: -45px;
+.card-body {
+   padding: 30px;
+}
+
+.form-group {
+   margin-bottom: 20px;
+}
+
+.form-group label {
+   font-weight: bold;
+   color: #8B4513;
 }
 
 .input-group-prepend span {
-   width: 50px;
-   background-color: white;
-   color: #169008;
-   border: 0 !important;
-}
-
-input:focus {
-   outline: 0 0 0 0 !important;
-   box-shadow: 0 0 0 0 !important;
-}
-
-.login_btn {
-   color: #169008;
-   border-radius: 20px;
-   border: 1px solid #169008;
-   width: 50%;
-   margin-left: 25%;
-}
-
-.login_btn:hover {
+   width: 40px;
+   background-color: #8B4513;
    color: white;
-   background-color: #169008;
+   border: none;
 }
 
-.links {
-   color: white;
+.form-control {
+   border-radius: 5px;
+}
+
+.btn-success {
+   background-color: #8B4513;
+   border: none;
+}
+
+.btn-success:hover {
+   background-color: #8B4513;
 }
 
 .card-footer {
    background-color: white;
-   border-radius: 10px;
+   border-bottom-left-radius: 15px;
+   border-bottom-right-radius: 15px;
+   padding: 20px;
 }
 
 .links {
-   color: #169008;
+   color: #8B4513;
 }
 
 .links a {
-   margin-left: 4px;
    text-decoration: none;
-   color: #169008;
+   color: #8B4513;
+   font-weight: bold;
+}
+
+.links a:hover {
+   text-decoration: underline;
 }
 </style>

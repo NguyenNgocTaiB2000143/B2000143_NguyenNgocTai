@@ -29,7 +29,7 @@
                   <th scope="col" class="space-name">Tên sản phẩm</th>
                   <th scope="col">Giá</th>
                   <th scope="col" class="space-description">Mô tả</th>
-                  <th scope="col" class="space-time">Ngày tạo/Cập nhật</th>
+                  <th scope="col" class="space-time">Ngày tạo</th>
                   <th scope="col" class="space-handle">Xử lý</th>
                </tr>
             </thead>
